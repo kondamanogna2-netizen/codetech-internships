@@ -1,0 +1,52 @@
+
+# Movie Genre Classification
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+# Sample movie descriptions
+descriptions = [
+    "A hero fights criminals and saves the city",
+    "A group of friends go on a funny adventure",
+    "Two people fall in love and get married",
+    "A detective investigates a mysterious murder",
+    "Ghosts scare people in a haunted house",
+    "Soldiers fight enemies in a dangerous war",
+    "A comedian makes everyone laugh",
+    "A couple faces problems in their relationship",
+    "A detective solves a crime mystery",
+    "A family escapes from a haunted mansion"
+]
+
+# Movie genres
+genres = [
+    "Action",
+    "Comedy",
+    "Romance",
+    "Thriller",
+    "Horror",
+    "Action",
+    "Comedy",
+    "Romance",
+    "Thriller",
+    "Horror"
+]
+
+# Convert text into numerical features
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(descriptions)
+
+# Train the model
+model = MultinomialNB()
+model.fit(X, genres)
+
+# Get a new movie description
+print("MOVIE GENRE CLASSIFICATION")
+movie = input("Enter movie description: ")
+
+# Predict genre
+movie_vector = vectorizer.transform([movie])
+prediction = model.predict(movie_vector)
+
+print("Predicted Movie Genre:", prediction[0])
+pip install scikit-learn
