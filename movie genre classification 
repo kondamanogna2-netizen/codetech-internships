@@ -50,3 +50,4 @@ prediction = model.predict(movie_vector)
 
 print("Predicted Movie Genre:", prediction[0])
 pip install scikit-learn
+python movie_genre.py
